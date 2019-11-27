@@ -10,7 +10,16 @@
 
 	<context:annotation-config/>
 	<context:component-scan base-package="com.ssi"/>
-	<bean id="connection" class="com.ssi.Connector" factory-method="connect"/>
+	
+	<!-- <bean id="connector" class="com.ssi.Connector"/> -->
+	
+	<bean id="connection" class="com.ssi.Connector" factory-bean="connector" factory-method="connect"/>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>messages</value>
+		</property>
+	</bean>
 	
 	
 	
